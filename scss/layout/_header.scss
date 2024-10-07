@@ -1,0 +1,119 @@
+@use "../abstract/" as *;
+@use "../base/" as *;
+
+.header {
+  background: $clr-light;
+  &__wrapper {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+
+    .toggle__menu {
+      background: #f0f0f0;
+      padding: 1rem;
+      border-radius: 100rem;
+      margin: 0 auto;
+      span {
+        width: 2.5rem;
+        height: 0.3rem;
+        background-color: $clr-dark;
+        display: block;
+        border-radius: 5rem;
+        transition: 0.5s ease;
+        &:nth-child(2) {
+          margin: 0.5rem 0;
+        }
+      }
+      &.open {
+        span {
+          &:first-child {
+            transform: translateY(6px) rotate(225deg);
+            transition: 0.5s ease;
+          }
+          &:last-child {
+            transform: translateY(-10px) rotate(-225deg);
+            transition: 0.5s ease;
+          }
+          &:nth-child(2) {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    background: $clr-light;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: 550;
+    position: absolute;
+    top: 8rem;
+    left: 0rem;
+    padding: 0;
+    max-height: 0rem;
+    transition: 0.5s ease;
+    overflow: hidden;
+    width: 100%;
+    // gap: 2rem;
+    border-top: 1px solid transparent;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 4rem 3rem 0rem 3rem;
+      li {
+        transition: 0.5s ease;
+        position: relative;
+        a {
+          color: $clr-gray;
+        }
+      }
+    }
+
+    &.open {
+      max-height: 80rem;
+      box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+      border-top: 1px solid #f0f0f0;
+      transition: 0.5s ease;
+    }
+    &__button{
+      text-align: center;
+      padding: 3.5rem 0;
+      width: 100%;
+      a.btn {
+        text-align: center;
+        width: 90%;
+      }
+    }
+  }
+
+  @include mediaQuery($break-lg) {
+    &__wrapper {
+      display: grid;
+      grid-template-columns: 1.6fr 3fr;
+      justify-content: space-between;
+      .toggle__menu {
+        display: none;
+      }
+    }
+    &__nav {
+      position: static;
+      max-height: fit-content;
+      display: grid;
+      grid-template-columns: 6fr 1fr;
+      font-size: 1.7rem;
+      ul {
+        display: flex;
+        flex-direction: row;
+        gap: 5rem;
+        align-items: center;
+        padding: 0rem 0rem 0rem 0rem;
+      }
+      &__button{
+        padding:0;
+      }
+    }
+  }
+}

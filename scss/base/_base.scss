@@ -1,0 +1,18 @@
+@use "../abstract/" as *;
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+.container {
+  max-width: 165rem;
+  margin: 0 auto;
+  padding:1.5rem;
+  width: 100%;
+}
+
+$break-sm:500px;
+$break-md:768px;
+$break-lg:1024px;
